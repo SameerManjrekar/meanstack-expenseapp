@@ -1,0 +1,29 @@
+{
+  "name": "meanstackexpenseapp",
+  "version": "1.0.0",
+  "description": "This is a Mean Stack Expense App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SameerManjrekar/meanstack-expenseapp.git"
+  },
+  "keywords": [
+    "This",
+    "is",
+    "a",
+    "Sample",
+    "Mean",
+    "Stack",
+    "Expense",
+    "App"
+  ],
+  "author": "Sameer Manjrekar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SameerManjrekar/meanstack-expenseapp/issues"
+  },
+  "homepage": "https://github.com/SameerManjrekar/meanstack-expenseapp#readme"
+}
