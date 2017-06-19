@@ -5,5 +5,5 @@ module.exports = {
     db: 'expense-app',
     serverPort: '8080',
     secret: secret,
-    tokenexp: 8000
+    tokenexp: 10000
 }

@@ -1,0 +1,61 @@
+<div class="page-header">
+  Profile
+</div>
+
+<form [formGroup]="profileForm" (submit)="updateUser()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" readonly>
+      {{ userObj.username }}
+  </div>
+
+  <div class="form-group">
+    <label for="firstname">First Name</label>
+    <div [ngClass]="{ 'has-error': (profileForm.get('firstname').errors && profileForm.get('firstname').dirty)}">
+      <input type="text" name="firstname" formControlName="firstname" class="form-control" placeholder="FirstName">
+      <ul class="help-block">
+        <li *ngIf="profileForm.get('firstname').errors?.required && profileForm.get('firstname').dirty">
+          First Name is required
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <div [ngClass]="{ 'has-error': (profileForm.get('lastname').errors && profileForm.get('lastname').dirty)}">
+      <input type="text" name="lastname" formControlName="lastname" class="form-control" placeholder="LastName">
+      <ul class="help-block">
+        <li *ngIf="profileForm.get('lastname').errors?.required && profileForm.get('lastname').dirty">
+          Last Name is required
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Last Name</label>
+    <div [ngClass]="{ 'has-error': (profileForm.get('email').errors && profileForm.get('email').dirty)}">
+      <input type="text" name="email" formControlName="email" class="form-control" placeholder="Email">
+      <ul class="help-block">
+        <li *ngIf="profileForm.get('email').errors?.required && profileForm.get('email').dirty">
+          Email is required
+        </li>
+        <li *ngIf="profileForm.get('email').errors?.pattern && profileForm.get('email').dirty">
+          Email id is not in correct format
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="username">Lastlogin</label>
+    <input type="text" class="form-control" readonly>
+      {{ userObj.lastlogin }}
+  </div>
+
+  <div class="form-group">
+    <input type="submit" [disabled]="!profileForm.valid" class="btn btn-primary" value="Update">
+    <input type="submit" class="btn btn-default" value="Cancel">
+  </div>
+</form>

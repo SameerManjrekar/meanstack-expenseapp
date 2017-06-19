@@ -15,8 +15,8 @@ router.post('/register', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    if(!firstname) {
-        console.log(firstname);
+    if(!req.body.firstname) {
+        console.log(req.body.firstname);
         res.json({ success: false, message: 'First name not provided' });
     } else {
         if(!lastname) {
@@ -83,8 +83,8 @@ router.post('/login', (req, res) => {
                         if(err) {
                             res.json({ success: false, message: err });
                         } else {                            
-                                res.json({ succes: true, message: { userId: user._id, username: user.username,
-                                            firstnae: user.firstname, email: user.email, lastlogin: user.lastlogin },token: token});                            
+                                res.json({ success: true, message: { userId: user._id, username: user.username,
+                                            firstname: user.firstname, email: user.email, lastlogin: user.lastlogin },token: token});                            
                         }
                     });
                 } else {
@@ -120,12 +120,12 @@ router.get('/user/:id', (req, res, next) => {
         if(err) {
             res.json({ success: false, message: 'Username not found' });
         } else {
-            res.json({ success: true, data: user });
+            res.json({ success: true, message: user });
         }
     });
 });
 
-router.put('/user/:id', (req, res, next) => {
+    router.put('/user/:id', (req, res, next) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const email = req.body.email;

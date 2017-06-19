@@ -1,0 +1,38 @@
+<div class="page-header">
+  Login
+</div>
+
+<form [formGroup]="loginForm" (submit)="loginSubmit()" novalidate autocomplete="off">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <div [ngClass]="{ 'has-error': (loginForm.get('username').errors && loginForm.get('username').dirty)}">
+      <input type="text" name="username" formControlName="username" class="form-control" placeholder="Username">
+      <ul class="help-block">
+        <li *ngIf="loginForm.get('username').errors?.required && loginForm.get('username').dirty">
+          Username is required
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <div [ngClass]="{ 'has-error': (loginForm.get('password').errors && loginForm.get('password').dirty)}">
+      <input type="password" name="password" formControlName="password" class="form-control" placeholder="Password">
+      <ul class="help-block">
+        <li *ngIf="loginForm.get('password').errors?.required && loginForm.get('password').dirty">
+          Password is required
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <input type="submit" [disabled]="!loginForm.valid" class="btn btn-primary" value="Login">
+  <br>
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-6">Forgot Password</div>
+    <div class="col-md-6 col-sm-6 col-xs-6" style="text-align: right">
+      <a routerLink="/register">Register</a>
+    </div>
+  </div>
+</form>

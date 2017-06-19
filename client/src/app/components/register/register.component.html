@@ -1,0 +1,93 @@
+<div class="page-header">
+  Register
+</div>
+
+<form [formGroup]="registerForm" (submit)="onRegisterSubmit()">
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <div [ngClass]="{ 'has-error': (registerForm.get('firstname').errors && registerForm.get('firstname').dirty )}">
+      <input type="text" name="firstname" formControlName="firstname" class="form-control" placeholder="Firstname">
+      <ul class="help-block">
+        <li *ngIf="registerForm.get('firstname').errors?.required && registerForm.get('firstname').dirty">
+          First name is required
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Lastname</label>
+    <div [ngClass]="{ 'has-error': (registerForm.get('lastname').errors && registerForm.get('lastname').dirty )}">
+      <input type="text" name="lastname" formControlName="lastname" class="form-control" placeholder="Lastname">
+      <ul class="help-block">
+        <li *ngIf="registerForm.get('lastname').errors?.required && registerForm.get('lastname').dirty">
+          Last name is required
+        </li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="email">Email</label>
+    <div [ngClass]="{ 'has-error': (registerForm.get('email').errors && registerForm.get('email').dirty )}">
+      <input type="text" name="email" formControlName="email" class="form-control" placeholder="Email">
+      <ul class="help-block">
+        <li *ngIf="registerForm.get('email').errors?.required && registerForm.get('email').dirty">
+          Email is required
+        </li>
+        <li *ngIf="registerForm.get('email').errors?.pattern && registerForm.get('email').dirty">
+          E-mail should be in proper format
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <div [ngClass]="{ 'has-error': (registerForm.get('username').errors && registerForm.get('username').dirty )}">
+      <input type="text" name="username" formControlName="username" class="form-control" placeholder="Username">
+      <ul class="help-block">
+        <li *ngIf="registerForm.get('username').errors?.required && registerForm.get('username').dirty">
+          Username is required
+        </li>
+        <li *ngIf="(registerForm.get('username').errors?.minlength || registerForm.get('username').errors?.maxlength) 
+                    && registerForm.get('username').dirty">
+          Username must be between 4 and 20 characters in length
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <div [ngClass]="{ 'has-error': (registerForm.get('password').errors && registerForm.get('password').dirty )}">
+      <input type="password" name="password" formControlName="password" class="form-control" placeholder="Password">
+      <ul class="help-block">
+        <li *ngIf="registerForm.get('password').errors?.required && registerForm.get('password').dirty">
+          Password is required
+        </li>        
+      </ul>
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="confirm">Password</label>
+    <div [ngClass]="{ 'has-error': (registerForm.get('confirm').errors && registerForm.get('confirm').dirty ) ||
+                (registerForm.errors?.comparePassword && registerForm.get('confirm').dirty)}">
+      <input type="password" name="confirm" formControlName="confirm" class="form-control" placeholder="Conform password">
+      <ul class="help-block">
+        <li *ngIf="registerForm.get('confirm').errors?.required && registerForm.get('confirm').dirty">
+          Conform Password is required
+        </li> 
+        <li *ngIf="registerForm.errors?.comparePassword && registerForm.get('confirm').dirty">
+          Passwords does not match
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" [disabled]="!registerForm.valid" value="Submit">
+    <input type="submit" class="btn ntn-default" value="Reset" (click)="resetRegisterForm()">
+  </div>
+</form>
